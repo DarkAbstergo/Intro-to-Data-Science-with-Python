@@ -27,6 +27,7 @@ df = df.drop('Totals')
 # Question 1
 # Which country has won the most gold medals in summer games?
 # This function should return a single string value.
+
 def answer_one():
     df1=df
     df1 = df1.sort_values('Gold',ascending=False)
@@ -37,6 +38,7 @@ answer_one()
 # Question 2
 # Which country had the biggest difference between their summer and winter gold medal counts?
 # This function should return a single string value.
+
 def answer_two():
     df2 = df
     df2['difference'] = df2['Gold']-df2['Gold.1']
@@ -50,12 +52,15 @@ answer_two()
 # which is (Summer Gold−Winter Gold)/Total Gold
 # Only include countries that have won at least 1 gold in both summer and winter.
 # This function should return a single string value.
+
+
 def answer_three():
     df3 = df[(df['Gold']>=1) & (df['Gold.1']>=1)]
     df3['difference'] = (df3['Gold']-df3['Gold.1'])/df3['Gold.2']
     df3 = df3.sort_values('difference',ascending=False)
     return df3.index[0]
 answer_three()
+
 
 # Question 4
 # Write a function that creates a Series called "Points" which is a weighted value where each gold medal (Gold.2) counts for 3 points,
